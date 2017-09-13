@@ -7,6 +7,23 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var coins = require('./routes/coins');
+var countries = require('./routes/countries');
+var metals = require('./routes/metals');
+var wears = require('./routes/wears');
+
+var models = require('./models');
+
+/**
+* SEQUELIZE SYNCHRONISATION
+*/
+//models.sequelize.sync();
+
+
+models.sequelize.query('SET FOREIGN_KEY_CHECKS = 0', {raw: true}).then(function(results) {
+        models.sequelize.sync({force: true});
+});
+
 
 var app = express();
 
@@ -24,6 +41,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/coins', coins);
+app.use('/countries', countries);
+app.use('/metals', metals);
+app.use('/wears', wears);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

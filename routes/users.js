@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const express = require('express');
+const models = require('../models');
+const router = express.Router();
+
+const User = models.User;
+
 
 module.exports = router;
