@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes){
-  var Country = sequelize.define('Country',{
+  var Wear = sequelize.define('Wear', {
     id : {
       type : DataTypes.BIGINT,
       primaryKey : true,
@@ -9,19 +9,9 @@ module.exports = function(sequelize, DataTypes){
     },
     name : {
       type : DataTypes.STRING,
-      allowNull : false
-    },
-    iso2 : {
-      type : DataTypes.STRING,
-      allowNull : false
-    },
-    iso3 : {
-      type : DataTypes.STRING,
-      allowNull : false
-    },
-    number : {
-      type : DataTypes.INTEGER,
-      allowNull : false
+      allowNull : false,
+      /* TODO : check this Sequelize property in documentation */
+      maxLength : 3
     }
   },{
     paranoid : true,
@@ -29,7 +19,7 @@ module.exports = function(sequelize, DataTypes){
     freezeTableName : true,
     classMethods : {
       associate : function(models){
-
+        
       }
     },
     instanceMethods : {
@@ -37,10 +27,9 @@ module.exports = function(sequelize, DataTypes){
         let result = {};
         result.id = this.id;
         result.name = this.name;
-        result.iso = this.iso;
         return result;
       }
     }
   });
-  return Country;
+  return Wear;
 };

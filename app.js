@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var coins = require('./routes/coins');
 var countries = require('./routes/countries');
 var metals = require('./routes/metals');
+var wears = require('./routes/wears');
 
 var models = require('./models');
 
@@ -43,6 +44,7 @@ app.use('/users', users);
 app.use('/coins', coins);
 app.use('/countries', countries);
 app.use('/metals', metals);
+app.use('/wears', wears);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
